@@ -1,1 +1,13 @@
-<p>to-do-list works!</p>
+<ul class="p-0 todo-list" *ngIf="unChecked.length!=0; else unDone">
+    <li *ngFor="let item of unChecked; let i = index">
+        <label class="container">{{item.name}}
+            <input type="checkbox" (click)="doneTask(item, i)">
+            <span class="checkmark"></span>
+          </label>
+    </li>
+</ul>
+<ul class="p-0 todo-list">
+    <ng-template #unDone>
+       Please create a Task
+      </ng-template>
+</ul>

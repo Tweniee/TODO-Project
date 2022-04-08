@@ -1,1 +1,13 @@
-<p>done-list works!</p>
+<ul class="p-0 todo-list" *ngIf="doneList.length!=0; else doneNone">
+    <li *ngFor="let item of doneList; let i = index">
+        <label class="container">{{item.name}}
+            <input type="checkbox" (click)="removeTodo(item, i)" [checked]="true">
+            <span class="checkmark"></span>
+          </label>
+    </li>
+</ul>
+<ul class="p-0 todo-list">
+    <ng-template #doneNone>
+       Please Complete a Task
+      </ng-template>
+</ul>

@@ -1,3 +1,51 @@
-<app-create-to-do></app-create-to-do>
-<app-to-do-list></app-to-do-list>
-<app-done-list></app-done-list>
+
+<!-- This project is not the perfect project as to complete it before time i have to work accordingly -->
+
+<div class="container todo-list-component">
+    <div class="todo-inputfild">
+        <div class="row ">
+          <div class="col-4">
+              <div class="todo-input">
+                  
+      <form action="/action_page.php">
+        <input type="text" id="name" name="name" (keyup)="addToList()" [(ngModel)]="toDo.name" placeholder="Name of task">
+      </form>
+              </div>
+          </div>
+          <div class="col-4">
+              <div class="todo-input">
+                <form action="/action_page.php">
+                  <input type="text-area" id="description" name="description" (keyup)="addToList()" [(ngModel)]="toDo.description" placeholder="description of the task">
+                </form>
+              </div>
+          </div>
+          <div class="col-4">
+              <div ngbDropdown class="d-inline-block drop-btn">
+                  <button type="button yesno-btn" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Repeating Task</button>
+                  <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="w-100">
+                    <button class="btn-border" (click)="toDo.repeat='Yes';addToList()" ngbDropdownItem>Yes</button> 
+                    <!-- Using Click to asign values because of the structure-->
+                    <button ngbDropdownItem (click)="toDo.repeat='No';addToList()">No</button>
+                    <!-- Using Click to asign values because of the structure-->
+                  </div>
+                </div>           
+          </div>
+      </div>
+      
+      </div>
+      
+    <div class="row">
+        <div class="col-6">
+            
+                <div class="list-border">
+                    <app-to-do-list [uncheckToDo]="uncheckedtoDO" (outputCheckedToDo)="outputCheckedToDo($event)"> </app-to-do-list>
+                </div>
+          
+        </div>
+        <div class="col-6">
+            <div class="list-border">
+                <app-done-list [doneTask]="doneToDO" (outputDoneToDo)="outputDoneToDo($event)"></app-done-list>
+            </div>
+        </div>
+    </div>
+</div>
